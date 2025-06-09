@@ -1,3 +1,10 @@
 typedef long long int llint;
 
-int lcg(llint a, llint c, llint m, int low, int high, int pre_rand);
+typedef struct
+{
+    llint a;
+    llint c;
+    llint m;
+} rand_Standard;
+
+int lcg(rand_Standard rand_stand, int low, int high, int pre_rand);
