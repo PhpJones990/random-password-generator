@@ -12,7 +12,7 @@ rand_Standard numerical_recipes = {1664525, 1013904223, 4294967296};
 // Borland LCG (rand() in Old C Compilers)
 rand_Standard borland = {22695477, 1, 4294967296};
 // MMIX (by Donald Knuth)
-rand_Standard mmix = {6364136223846793005, 1442695040888963407, 18446744073709551616};
+// rand_Standard mmix = {6364136223846793005, 1442695040888963407, 18446744073709551616};
 
 int random_number_generator(
     int seed,  
