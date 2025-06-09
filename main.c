@@ -3,14 +3,11 @@
 #include <math.h>
 #include "RNG_Algorithm/lcg.h"
 
-static int pre_rand = 0;
-
 // glibc (used by GCC)
 rand_Standard glibc_lcg = {1103515245, 12345, 2147483648};
 
 int random_number_generator(
-    int seed, 
-    int pre_rand, 
+    int seed,  
     int low, 
     int high, 
     rand_Standard rand_stand,
@@ -26,11 +23,15 @@ int main(void)
     scanf("%d", &len_of_password);
     getchar(); // remove the newline character from the input buffer
 
+    // call the function first to generator the seed 
+    int rand_number = random_number_generator(41, 0, size_of_symbols, glibc_lcg, lcg);
+
     char password[len_of_password+1];
     password[0] = '\0';
     for (int i = 0; i < len_of_password; i++)
     {
-        int rand_number = random_number_generator(41, pre_rand, 0, size_of_symbols, glibc_lcg, lcg);
+        // put -1 to seed means not to update the pre_rand value with seed whenever I call the lcg function
+        rand_number = random_number_generator(-1, 0, size_of_symbols, glibc_lcg, lcg);
 
         password[i] = characters[rand_number];
     }
@@ -48,14 +49,12 @@ int main(void)
 }
 
 int random_number_generator(
-    int seed, 
-    int pre_rand, 
+    int seed,  
     int low, 
     int high, 
     rand_Standard rand_stand,
     int (*algorithm)(rand_Standard, int, int, int))
 {
-    pre_rand = seed;
-    int rand_num = algorithm(rand_stand, low, high, pre_rand);
+    int rand_num = algorithm(rand_stand, low, high, seed);
     return rand_num;
 }

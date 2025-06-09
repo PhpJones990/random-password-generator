@@ -1,1 +1,5 @@
 main.exe
+main.o
+lcg.o
+random_number_generator.exe
+password.txt
