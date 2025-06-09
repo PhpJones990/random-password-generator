@@ -5,6 +5,14 @@
 
 // glibc (used by GCC)
 rand_Standard glibc_lcg = {1103515245, 12345, 2147483648};
+// Park-Miller (a well-known minimal standard)
+rand_Standard park_miller = {16807, 0, 2147483647};
+// Numerical Recipes LCG (Quick and Dirty)
+rand_Standard numerical_recipes = {1664525, 1013904223, 4294967296};
+// Borland LCG (rand() in Old C Compilers)
+rand_Standard borland = {22695477, 1, 4294967296};
+// MMIX (by Donald Knuth)
+rand_Standard mmix = {6364136223846793005, 1442695040888963407, 18446744073709551616};
 
 int random_number_generator(
     int seed,  
