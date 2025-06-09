@@ -23,8 +23,14 @@ int main(void)
     scanf("%d", &len_of_password);
     getchar(); // remove the newline character from the input buffer
 
+    // let the user to set the seed to get various random passwords
+    int seed;
+    printf("Set the seed: ");
+    scanf("%d", &seed);
+    getchar(); // remove the newline character from the input buffer
+
     // call the function first to generator the seed 
-    int rand_number = random_number_generator(41, 0, size_of_symbols, glibc_lcg, lcg);
+    int rand_number = random_number_generator(seed, 0, size_of_symbols, glibc_lcg, lcg);
 
     char password[len_of_password+1];
     password[0] = '\0';
