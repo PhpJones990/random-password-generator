@@ -1,16 +1,25 @@
-random_number_generator.exe: main.o lcg.o
-	gcc -g -Wall main.o lcg.o -o random_number_generator.exe
+ALGO_DIR = RNG_Algorithm/
+IMP = random_number_generator.exe
 
-main.o: main.c RNG_Algorithm/lcg.h RNG_Algorithm/lcg.c
+$(IMP): main.o algo.o
+	gcc -g -Wall main.o algo.o -o $(IMP)
+
+main.o: main.c $(ALGO_DIR)lcg.h $(ALGO_DIR)lcg.c $(ALGO_DIR)mwc.c $(ALGO_DIR)mwc.h
 	gcc -g -Wall -c main.c -o main.o
 
-lcg.o: RNG_Algorithm/lcg.h RNG_Algorithm/lcg.c
-	gcc -g -Wall -c RNG_Algorithm/lcg.c -o lcg.o
+algo.o: lcg.o mwc.o
+	ld -r lcg.o mwc.o -o algo.o
 
-run: random_number_generator.exe
-	./random_number_generator.exe
+lcg.o: $(ALGO_DIR)lcg.h $(ALGO_DIR)lcg.c
+	gcc -g -Wall -c $(ALGO_DIR)lcg.c -o lcg.o
+
+mwc.o: $(ALGO_DIR)mwc.h $(ALGO_DIR)mwc.c
+	gcc -g -Wall -c $(ALGO_DIR)mwc.c -o mwc.o
+
+run: $(IMP)
+	./$(IMP)
 
 clean:
-	del -Q random_number_generator.exe
+	del -Q $(IMP)
 	del -Q *.o
 	del -Q *.txt

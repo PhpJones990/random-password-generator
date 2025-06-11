@@ -2,7 +2,10 @@
 #include <string.h>
 #include <math.h>
 #include "RNG_Algorithm/lcg.h"
+#include "RNG_Algorithm/mwc.h"
 
+//Standard for LCG
+//-------------------------------------------------------------------------------------------
 // glibc (used by GCC)
 rand_Standard glibc_lcg = {1103515245, 12345, 2147483648};
 // Park-Miller (a well-known minimal standard)
@@ -13,6 +16,14 @@ rand_Standard numerical_recipes = {1664525, 1013904223, 4294967296};
 rand_Standard borland = {22695477, 1, 4294967296};
 // MMIX (by Donald Knuth)
 // rand_Standard mmix = {6364136223846793005, 1442695040888963407, 18446744073709551616};
+//-------------------------------------------------------------------------------------------
+
+//Standard for MWC
+// The seed and carry(c) is important!
+//-------------------------------------------------------------------------------------------
+rand_Standard old_python_mwc = {4294957665, 12345, 4294967296};
+rand_Standard experimental = {987654321, 12345, 4294967296};
+//-------------------------------------------------------------------------------------------
 
 int random_number_generator(
     int seed,  
@@ -38,14 +49,14 @@ int main(void)
     getchar(); // remove the newline character from the input buffer
 
     // call the function first to generator the seed 
-    int rand_number = random_number_generator(seed, 0, size_of_symbols, glibc_lcg, lcg);
+    int rand_number = random_number_generator(seed, 0, size_of_symbols, old_python_mwc, mwc);
 
     char password[len_of_password+1];
     password[0] = '\0';
     for (int i = 0; i < len_of_password; i++)
     {
         // put -1 to seed means not to update the pre_rand value with seed whenever I call the lcg function
-        rand_number = random_number_generator(-1, 0, size_of_symbols, glibc_lcg, lcg);
+        rand_number = random_number_generator(-1, 0, size_of_symbols, old_python_mwc, mwc);
 
         password[i] = characters[rand_number];
     }
