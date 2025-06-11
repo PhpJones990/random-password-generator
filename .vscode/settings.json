@@ -1,7 +1,8 @@
 {
     "cSpell.words": [
         "llint",
-        "MMIX"
+        "MMIX",
+        "xorshift"
     ],
     "files.associations": {
         "lcg.h": "c"

@@ -3,5 +3,6 @@ main.o
 algo.o
 lcg.o
 mwc.o
+xorshift.o
 random_number_generator.exe
 password.txt

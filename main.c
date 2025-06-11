@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+#include <stdint.h>
 #include "RNG_Algorithm/lcg.h"
 #include "RNG_Algorithm/mwc.h"
+#include "RNG_Algorithm/xorshift.h"
 
 //Standard for LCG
 //-------------------------------------------------------------------------------------------
@@ -23,6 +25,13 @@ rand_Standard borland = {22695477, 1, 4294967296};
 //-------------------------------------------------------------------------------------------
 rand_Standard old_python_mwc = {4294957665, 12345, 4294967296};
 rand_Standard experimental = {987654321, 12345, 4294967296};
+//-------------------------------------------------------------------------------------------
+
+//Common Shift Triplets
+//-------------------------------------------------------------------------------------------
+rand_Standard first_triplet = {13, 7, 17};
+rand_Standard second_triplet = {10, 13, 10};
+rand_Standard thrid_triplet = {24, 21, 11};
 //-------------------------------------------------------------------------------------------
 
 int random_number_generator(
@@ -49,14 +58,14 @@ int main(void)
     getchar(); // remove the newline character from the input buffer
 
     // call the function first to generator the seed 
-    int rand_number = random_number_generator(seed, 0, size_of_symbols, old_python_mwc, mwc);
+    int rand_number = random_number_generator(seed, 0, size_of_symbols, first_triplet, xorshift);
 
     char password[len_of_password+1];
     password[0] = '\0';
     for (int i = 0; i < len_of_password; i++)
     {
         // put -1 to seed means not to update the pre_rand value with seed whenever I call the lcg function
-        rand_number = random_number_generator(-1, 0, size_of_symbols, old_python_mwc, mwc);
+        rand_number = random_number_generator(-1, 0, size_of_symbols, first_triplet, xorshift);
 
         password[i] = characters[rand_number];
     }
