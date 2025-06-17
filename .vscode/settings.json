@@ -1,10 +1,12 @@
 {
     "cSpell.words": [
+        "lfsr",
         "llint",
         "MMIX",
         "xorshift"
     ],
     "files.associations": {
-        "lcg.h": "c"
+        "lcg.h": "c",
+        "stdio.h": "c"
     }
 }
