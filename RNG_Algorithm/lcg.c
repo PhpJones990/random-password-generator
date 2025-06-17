@@ -1,5 +1,5 @@
 #include <math.h>
-#include "lcg.h"
+#include "algorithm.h"
 
 // pre_rand should be static int and it should be assign the seed value initially
 

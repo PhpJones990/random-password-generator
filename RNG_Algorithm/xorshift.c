@@ -1,6 +1,6 @@
 #include <stdint.h>
 #include <math.h>
-#include "lcg.h"
+#include "algorithm.h"
 
 static uint64_t state = 0;
 

@@ -1,4 +1,4 @@
-#include "lcg.h"
+#include "algorithm.h"
 #include <stdint.h>
 #include <math.h>
 

@@ -7,3 +7,4 @@ xorshift.o
 lfsr.o
 random_number_generator.exe
 password.txt
+tasks.txt

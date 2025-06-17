@@ -1,6 +1,6 @@
 #include <stdint.h>
 #include <math.h>
-#include "lcg.h"
+#include "algorithm.h"
 
 static unsigned int state = 0;
 

@@ -2,10 +2,7 @@
 #include <string.h>
 #include <math.h>
 #include <stdint.h>
-#include "RNG_Algorithm/lcg.h"
-#include "RNG_Algorithm/mwc.h"
-#include "RNG_Algorithm/xorshift.h"
-#include "RNG_Algorithm/lfsr.h"
+#include "RNG_Algorithm/algorithm.h"
 
 //Standard for LCG
 //-------------------------------------------------------------------------------------------
@@ -65,14 +62,14 @@ int main(void)
     getchar(); // remove the newline character from the input buffer
 
     // call the function first to generator the seed 
-    int rand_number = random_number_generator(seed, 0, size_of_symbols, first_taps, lfsr);
+    int rand_number = random_number_generator(seed, 0, size_of_symbols, second_taps, lfsr);
 
     char password[len_of_password+1];
     password[0] = '\0';
     for (int i = 0; i < len_of_password; i++)
     {
         // put -1 to seed means not to update the pre_rand value with seed whenever I call the lcg function
-        rand_number = random_number_generator(-1, 0, size_of_symbols, first_taps, lfsr);
+        rand_number = random_number_generator(-1, 0, size_of_symbols, second_taps, lfsr);
 
         password[i] = characters[rand_number];
     }
