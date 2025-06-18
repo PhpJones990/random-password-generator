@@ -2,6 +2,13 @@
 #include <math.h>
 #include "algorithm.h"
 
+//Common Shift Triplets
+//-------------------------------------------------------------------------------------------
+rand_Standard first_triplet = {13, 7, 17};
+rand_Standard second_triplet = {10, 13, 10};
+rand_Standard thrid_triplet = {24, 21, 11};
+//-------------------------------------------------------------------------------------------
+
 static uint64_t state = 0;
 
 int xorshift(rand_Standard shift_triplets, int low, int high, int seed)

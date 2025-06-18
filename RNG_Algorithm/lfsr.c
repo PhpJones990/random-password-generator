@@ -2,6 +2,12 @@
 #include <math.h>
 #include "algorithm.h"
 
+//Linear-Feedback Shift Register
+//-------------------------------------------------------------------------------------------
+rand_Standard first_taps = {32, 30, 26, 25};
+rand_Standard second_taps = {32, 22, 2, 1};
+//-------------------------------------------------------------------------------------------
+
 static unsigned int state = 0;
 
 int lfsr(rand_Standard taps, int low, int height, int seed)

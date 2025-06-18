@@ -2,6 +2,13 @@
 #include <stdint.h>
 #include <math.h>
 
+//Standard for MWC
+// The seed and carry(c) is important!
+//-------------------------------------------------------------------------------------------
+rand_Standard old_python_mwc = {4294957665, 12345, 4294967296};
+rand_Standard experimental = {987654321, 12345, 4294967296};
+//-------------------------------------------------------------------------------------------
+
 static unsigned int pre_rand = 0;
 static uint64_t c = 0;
 

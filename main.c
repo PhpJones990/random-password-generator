@@ -4,40 +4,6 @@
 #include <stdint.h>
 #include "RNG_Algorithm/algorithm.h"
 
-//Standard for LCG
-//-------------------------------------------------------------------------------------------
-// glibc (used by GCC)
-rand_Standard glibc_lcg = {1103515245, 12345, 2147483648};
-// Park-Miller (a well-known minimal standard)
-rand_Standard park_miller = {16807, 0, 2147483647};
-// Numerical Recipes LCG (Quick and Dirty)
-rand_Standard numerical_recipes = {1664525, 1013904223, 4294967296};
-// Borland LCG (rand() in Old C Compilers)
-rand_Standard borland = {22695477, 1, 4294967296};
-// MMIX (by Donald Knuth)
-// rand_Standard mmix = {6364136223846793005, 1442695040888963407, 18446744073709551616};
-//-------------------------------------------------------------------------------------------
-
-//Standard for MWC
-// The seed and carry(c) is important!
-//-------------------------------------------------------------------------------------------
-rand_Standard old_python_mwc = {4294957665, 12345, 4294967296};
-rand_Standard experimental = {987654321, 12345, 4294967296};
-//-------------------------------------------------------------------------------------------
-
-//Common Shift Triplets
-//-------------------------------------------------------------------------------------------
-rand_Standard first_triplet = {13, 7, 17};
-rand_Standard second_triplet = {10, 13, 10};
-rand_Standard thrid_triplet = {24, 21, 11};
-//-------------------------------------------------------------------------------------------
-
-//Linear-Feedback Shift Register
-//-------------------------------------------------------------------------------------------
-rand_Standard first_taps = {32, 30, 26, 25};
-rand_Standard second_taps = {32, 22, 2, 1};
-//-------------------------------------------------------------------------------------------
-
 int random_number_generator(
     int seed,  
     int low, 
