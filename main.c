@@ -8,8 +8,7 @@ int random_number_generator(
     int seed,  
     int low, 
     int high, 
-    rand_Standard rand_stand,
-    int (*algorithm)(rand_Standard, int, int, int)); // this is the wrapper function for the algorithm
+    int (*algorithm)(int, int, int)); // this is the wrapper function for the algorithm
 
 int main(void)
 {
@@ -28,14 +27,14 @@ int main(void)
     getchar(); // remove the newline character from the input buffer
 
     // call the function first to generator the seed 
-    int rand_number = random_number_generator(seed, 0, size_of_symbols, second_taps, lfsr);
+    int rand_number = random_number_generator(seed, 0, size_of_symbols, lfsr);
 
     char password[len_of_password+1];
     password[0] = '\0';
     for (int i = 0; i < len_of_password; i++)
     {
         // put -1 to seed means not to update the pre_rand value with seed whenever I call the lcg function
-        rand_number = random_number_generator(-1, 0, size_of_symbols, second_taps, lfsr);
+        rand_number = random_number_generator(-1, 0, size_of_symbols, lfsr);
 
         password[i] = characters[rand_number];
     }
@@ -56,9 +55,8 @@ int random_number_generator(
     int seed,  
     int low, 
     int high, 
-    rand_Standard rand_stand,
-    int (*algorithm)(rand_Standard, int, int, int))
+    int (*algorithm)(int, int, int))
 {
-    int rand_num = algorithm(rand_stand, low, high, seed);
+    int rand_num = algorithm(low, high, seed);
     return rand_num;
 }
